@@ -1,4 +1,4 @@
-Very simple chrome extension for Last.FM.
+Very simple chrome extension for Last.FM. Using the plainest JS I can in case there are issues with modern JS support.
 
 The delete scrobble button was moved in the redesign last year to be under a drop down menu. As the system frequently will record things as being played which weren't, this is pretty awkward for tidying up records. This extension scrapes the button and its respective form from the drop down menu and plants it roughly in the same location it used to be.
 
