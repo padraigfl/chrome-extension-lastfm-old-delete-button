@@ -1,8 +1,20 @@
 .chrome-extension-delete button.mimic-link.dropdown-menu-clickable-item{
-  display: inline-block;
-  width: 48px;
-
+  display: inline;
+  font-size: 10px;
+  height: 26px;
+  width: 26px;
+  padding: 0px;
+  border-radius: 13px;
+  text-align: center;
+  margin-left:0px;
+  background-color: #ddd;
+  color: #aaa;
 }
+.chrome-extension-delete button.mimic-link.dropdown-menu-clickable-item:hover{
+  background-color: #bbb;
+  color: #888;
+}
+
 .chrome-extension-delete{
-  width: 60px;
+  width: 28px;
 }
