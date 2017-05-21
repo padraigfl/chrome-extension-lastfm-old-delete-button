@@ -2,12 +2,14 @@
   "manifest_version": 2,
 
   "name": "lastfm-delete-track-button",
-  "version": "1.0",
+  "version": "1.0.1",
   "description": "Says hello to Google",
+  "run_at": "document_end",
   "content_scripts": [
     {
       "matches": [
         "*://*.last.fm/user/*/library",
+        "*://*.last.fm/user/*/library?page=*",
         "*://*.last.fm/user/*/library/music/*/*/*"],
       "js": ["delete-code.js"],
       "css": ["delete-styles.css"]

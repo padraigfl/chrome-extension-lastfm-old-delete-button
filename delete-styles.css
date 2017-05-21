@@ -6,13 +6,20 @@
   padding: 0px;
   border-radius: 13px;
   text-align: center;
-  margin-left:0px;
+  margin-left:16px;
+  margin-right:0px;
   background-color: #ddd;
   color: #aaa;
 }
 .chrome-extension-delete button.mimic-link.dropdown-menu-clickable-item:hover{
   background-color: #bbb;
   color: #888;
+}
+.chrome-extension-delete button.mimic-link.dropdown-menu-clickable-item:focus{
+  outline: none;
+}
+.chrome-extension-delete button.mimic-link.dropdown-menu-clickable-item:active{
+  box-shadow: 0px 0px 0px 1px #bbb;
 }
 
 .chrome-extension-delete{

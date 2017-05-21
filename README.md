@@ -9,3 +9,4 @@ Things to do:
 - Design an icon
 - Style the button to behave exactly like the old one
 - Add a pop up form to ensure it only checks on pages with your username
+- Respond to changes in address bar (currently you have to refresh each page you don't directly visit as the whole page isn't refreshed from within last.fm)
