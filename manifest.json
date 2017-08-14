@@ -4,7 +4,6 @@
   "name": "lastfm-delete-track-button",
   "version": "1.0.1",
   "description": "Says hello to Google",
-  "run_at": "document_end",
   "content_scripts": [
     {
       "matches": [
