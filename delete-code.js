@@ -33,7 +33,26 @@ var insert_delete_forms = function(){
 }
 
 var scrobblelist = document.getElementsByClassName('tracklist-section')[0];
-scrobblelist.onLoad = insert_delete_forms();
+
+var addNextListener = function(){
+  var paginationLinks = document
+    .getElementsByClassName("pagination")[0]
+    .getElementsByTagName("a");
+  for(var i=0; i<paginationLinks.length; i++){
+    paginationLinks[i].addEventListener("click", function(){
+      setTimeout(runWhenReady, 3000);
+    });
+  }
+}
+
+var runWhenReady = function(){
+  scrobblelist.ready = insert_delete_forms();
+  setTimeout(addNextListener, 1000);
+}
+
+runWhenReady();
+
+
 
 
 // var paginationhack = document.getElementsByClassName('pagination')[0].getElementsByTagName('a');
