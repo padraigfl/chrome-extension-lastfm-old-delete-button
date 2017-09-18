@@ -1,3 +1,7 @@
+// The DOM element we're focusing on
+var scrobblelist = document.getElementsByClassName('tracklist-section')[0];
+
+// pulls existing form for deleting associated scrobble from dropdown menu
 var get_delete_form = function(scrobble_row){
   var drop_down_forms = scrobble_row
     .getElementsByClassName('chartlist-more-menu')[0]
@@ -15,9 +19,9 @@ var get_delete_form = function(scrobble_row){
   return null;
 }
 
+// plugs a duplicate of the pulled form into the table
 var insert_delete_forms = function(){
   var scrobbles = document.getElementsByClassName('js-link-block js-focus-controls-container');
-  console.log('last.fm delete button script is running');
 
   for(var i_scrob = 0; i_scrob < scrobbles.length; i_scrob++){
     var delete_button = get_delete_form(scrobbles[i_scrob]);
@@ -32,30 +36,32 @@ var insert_delete_forms = function(){
   }
 }
 
-var scrobblelist = document.getElementsByClassName('tracklist-section')[0];
-
-var addNextListener = function(){
+// adds listeners to a variety of navigation links so as to trigger extension on page change
+var addNextListeners = function(){
   var paginationLinks = document
     .getElementsByClassName("pagination")[0]
     .getElementsByTagName("a");
   for(var i=0; i<paginationLinks.length; i++){
     paginationLinks[i].addEventListener("click", function(){
-      setTimeout(runWhenReady, 3000);
+      setTimeout(waitForNewResults, 1000);
     });
+  }
+}
+
+// checks if injected buttons exist, if yes then components haven't reloaded yet
+var waitForNewResults = function(){
+  var verifier = document.getElementsByClassName('chrome-extension-delete').length;
+  if(verifier !== 0){
+    setTimeout(waitForNewResults, 1000);
+  }
+  else{
+    runWhenReady();
   }
 }
 
 var runWhenReady = function(){
   scrobblelist.ready = insert_delete_forms();
-  setTimeout(addNextListener, 1000);
+  setTimeout(addNextListeners, 1000);
 }
 
 runWhenReady();
-
-
-
-
-// var paginationhack = document.getElementsByClassName('pagination')[0].getElementsByTagName('a');
-// paginationhack[0].addEventListener("click", insert_delete_forms);
-// paginationhack[1].addEventListener("click", insert_delete_forms);
-// this doesn't work but I'm leaving it in as a reminder it needs an alternative
