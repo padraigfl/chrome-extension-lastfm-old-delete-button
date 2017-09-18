@@ -2,8 +2,8 @@
   "manifest_version": 2,
 
   "name": "lastfm-delete-track-button",
-  "version": "1.0.1",
-  "description": "Says hello to Google",
+  "version": "1.0.2",
+  "description": "Adds delete buttons on scrobble list",
   "content_scripts": [
     {
       "matches": [
