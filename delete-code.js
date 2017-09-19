@@ -1,6 +1,19 @@
 // The DOM element we're focusing on
 var scrobblelist = document.getElementsByClassName('tracklist-section')[0];
 
+// unused at the moment
+var get_profile_page_links = function(){
+  var profile_page_links = [
+    document
+      .getElementsByClassName('recent-tracks-section')[0]
+      .getElementsByClassName('text-colour')[0],
+    document
+      .getElementsByClassName('more-link')[0]
+      .getElementsByTagName('a')[0]
+  ];
+  return profile_page_links;
+}
+
 // pulls existing form for deleting associated scrobble from dropdown menu
 var get_delete_form = function(scrobble_row){
   var drop_down_forms = scrobble_row
@@ -36,15 +49,21 @@ var insert_delete_forms = function(){
   }
 }
 
+var addTriggerListener = function(element){
+  element.addEventListener("click", function(){
+    setTimeout(waitForNewResults, 1000);
+  });
+}
+
 // adds listeners to a variety of navigation links so as to trigger extension on page change
 var addNextListeners = function(){
   var paginationLinks = document
     .getElementsByClassName("pagination")[0]
     .getElementsByTagName("a");
-  for(var i=0; i<paginationLinks.length; i++){
-    paginationLinks[i].addEventListener("click", function(){
-      setTimeout(waitForNewResults, 1000);
-    });
+  if(paginationLinks.length > 0){
+    for(var i=0; i<paginationLinks.length; i++){
+      addTriggerListener(paginationLinks[i])
+    }
   }
 }
 

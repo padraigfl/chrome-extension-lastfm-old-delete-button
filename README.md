@@ -1,5 +1,11 @@
 To install, drag and drop the CRX file into a window with [chrome://extensions/] open. It's possible I may forget to update the CRX file on some updates so double check that it was updated in the most recent commit.
 
+This extension only runs on pages with:
+- "*://*.last.fm/user/*/library",
+- "*://*.last.fm/user/*/library?page=*",
+- "*://*.last.fm/user/*/library/music/*/*/*"
+Due to how Last.FM loads new pages, if you don't initially go direct to a matching URL, a hard refresh may be required.
+
 ## Problem
 The delete scrobble button was moved in the redesign last year to be under a drop down menu. As the system frequently will record things as being played which weren't, this is pretty awkward for tidying up records.
 
