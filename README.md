@@ -1,4 +1,8 @@
-To install, drag and drop the CRX file into a window with [chrome://extensions/] open. It's possible I may forget to update the CRX file on some updates so double check that it was updated in the most recent commit.
+Note: if this extension isn't working, please try the most basic implementation [here](https://github.com/ComeDownToUs/chrome-extension-lastfm-old-delete-button/tree/basic-running-extension)
+
+-----
+
+To install, drag and drop the CRX file into a window with [the extensions manager](chrome://extensions/) open. It's possible I may forget to update the CRX file on some updates so double check that it was updated in the most recent commit.
 
 This extension only runs on pages with:
 - "*://*.last.fm/user/*/library",
@@ -13,7 +17,7 @@ The delete scrobble button was moved in the redesign last year to be under a dro
 An extension which scrapes the button and its respective form from the drop down menu and plants it roughly in the same location it used to be.
 
 ## Implementation
-A very simple chrome extension for Last.FM. Using the plainest JS I can in case there are issues with modern JS support.
+A very simple chrome extension for Last.FM, the delete-code.js file plugged into the header of any relevant last.fm page should run. Using the plainest JS I can in case there are issues with modern JS support with some browsers.
 This whole extension depends on the DOM being as it currently is, even minor changes on their end could disrupt functionality.
 
 The code currently runs on every last.fm library page which may have deletion options (URLs specified in the manifest) and only makes changes on pages which do have them.
