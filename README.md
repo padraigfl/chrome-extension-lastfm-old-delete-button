@@ -1,12 +1,32 @@
-Very simple chrome extension for Last.FM. Using the plainest JS I can in case there are issues with modern JS support.
+Note: if this extension isn't working, please try the most basic implementation [here](https://github.com/ComeDownToUs/chrome-extension-lastfm-old-delete-button/tree/basic-running-extension)
 
-The delete scrobble button was moved in the redesign last year to be under a drop down menu. As the system frequently will record things as being played which weren't, this is pretty awkward for tidying up records. This extension scrapes the button and its respective form from the drop down menu and plants it roughly in the same location it used to be.
+-----
 
-The code currently runs on every last.fm library page which may have deletion options (URLs specified in the manifest) and only makes changes on pages which do have them. The code breaks early when it realises you're on a page where you do not have deletion privileges but probably could be improved.
+To install, drag and drop the CRX file into a window with [the extensions manager](chrome://extensions/) open. It's possible I may forget to update the CRX file on some updates so double check that it was updated in the most recent commit.
 
+This extension only runs on pages with:
+- "*://*.last.fm/user/*/library",
+- "*://*.last.fm/user/*/library?page=*",
+- "*://*.last.fm/user/*/library/music/*/*/*"
+Due to how Last.FM loads new pages, if you don't initially go direct to a matching URL, a hard refresh may be required.
 
-Things to do:
-- Design an icon
-- Style the button to behave exactly like the old one
-- Add a pop up form to ensure it only checks on pages with your username
-- Respond to changes in address bar (currently you have to refresh each page you don't directly visit as the whole page isn't refreshed from within last.fm)
+## Problem
+The delete scrobble button was moved in the redesign last year to be under a drop down menu. As the system frequently will record things as being played which weren't, this is pretty awkward for tidying up records.
+
+## Solution
+An extension which scrapes the button and its respective form from the drop down menu and plants it roughly in the same location it used to be.
+
+## Implementation
+A very simple chrome extension for Last.FM, the delete-code.js file plugged into the header of any relevant last.fm page should run. Using the plainest JS I can in case there are issues with modern JS support with some browsers.
+This whole extension depends on the DOM being as it currently is, even minor changes on their end could disrupt functionality.
+
+The code currently runs on every last.fm library page which may have deletion options (URLs specified in the manifest) and only makes changes on pages which do have them.
+
+### Issues
+As URL changes don't cause whole page resets, the extension required a hard refresh on each new page after the first one. The current setup uses a pretty simplistic series of loops, checks and listeners to deal with this.
+
+## To do
+- Add a user input of some kind to ensure it only checks on pages with your username
+- Improve listener implementation
+- Switch to more advanced extension optimisations (probably not worth the effort)
+
